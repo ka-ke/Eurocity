@@ -87,7 +87,7 @@ void Car::draw(DrawingState* d)
 	  drawWheel(h,1);
   glPopMatrix();
   glPushMatrix();
-	  glTranslatef(w-.5f,h,f+r-h-1);
+  glTranslatef(w - .5f, h, f + r + s + br - h - 1);
 	  drawWheel(h,1);
   glPopMatrix();
 
@@ -97,7 +97,7 @@ void Car::draw(DrawingState* d)
 	  drawWheel(h,1);
   glPopMatrix();
   glPushMatrix();
-	  glTranslatef(-w+.5f,h,f+r-h-1);
+  glTranslatef(-w + .5f, h, f + r + s + br - h - 1);
 	  glRotatef(180,0,1,0);
 	  drawWheel(h,1);
   glPopMatrix();
@@ -163,13 +163,63 @@ void Car::drawAfter(DrawingState* s)
 
 void Car::drawBody(DrawingState*)
 {
+	glBegin(GL_TRIANGLE_STRIP);
+		glVertex3f(-w, h, 0);
+		glVertex3f(-w, h, f + s + r + br);
+		glVertex3f(-w, h + m, 0.);
+		glVertex3f(-w, h + m + a, f + s + r + br);
+		glVertex3f(-w, h + m + a, f);
+		glVertex3f(-w + sr, h + t, f + s + r);
+		glVertex3f(-w + sr, h + t, f + s);
+	glEnd();
 
-	polygon(-4, -w,h,0., -w,h+t,0., w,h+t,0., w,h,0.);
-	polygon(4, -w,h,r+f, -w,h+t,r+f, w,h+t,r+f, w,h,r+f);
-	polygon(-4, w,t+h,0., -w,t+h,0., -w,t+h,f+r, w,t+h,f+r);
-	polygon(4, w,h,0., -w,h,0., -w,h,f+r, w,h,f+r);
-    polygon(-4, w,t+h,0., w,t+h,f+r, w,h,f+r, w,h,0.);
-	polygon(4, -w,t+h,0., -w,t+h,f+r, -w,h,f+r, -w,h,0.);
+	glBegin(GL_TRIANGLE_STRIP);
+		glVertex3f(w, h, 0);
+		glVertex3f(w, h + m, 0.);
+		glVertex3f(w, h, f + s + r + br);
+		glVertex3f(w, h + m + a, f);
+		glVertex3f(w, h + m + a, f + s + r + br);
+		glVertex3f(w - sr, h + t, f + s);
+		glVertex3f(w - sr, h + t, f + s + r);
+	glEnd();
+
+	glBegin(GL_QUAD_STRIP);
+		glVertex3f(w, h, 0);
+		glVertex3f(-w, h, 0);
+		glVertex3f(w, h + m, 0);
+		glVertex3f(-w, h + m, 0.);
+		glVertex3f(w, h + m + a, f);
+		glVertex3f(-w, h + m + a, f);
+		glVertex3f(w - sr, h + t, f + s);
+		glVertex3f(-w + sr, h + t, f + s);
+		glVertex3f(w - sr, h + t, f + s + r);
+		glVertex3f(-w + sr, h + t, f + s + r);
+		glVertex3f(w, h + m + a, f + s + r + br);
+		glVertex3f(-w, h + m + a, f + s + r + br);
+		glVertex3f(w, h, f + s + r + br);
+		glVertex3f(-w, h, f + s + r + br);
+		glVertex3f(w, h, 0);
+		glVertex3f(-w, h, 0);
+	glEnd();
+	
+	glBegin(GL_QUAD_STRIP);
+		glVertex3f(w, h, 0);
+		glVertex3f(-w, h, 0);
+		glVertex3f(w, h + m, 0);
+		glVertex3f(-w, h + m, 0.);
+		glVertex3f(w, h + m + a, f);
+		glVertex3f(-w, h + m + a, f);
+		glVertex3f(w - sr, h + t, f + s);
+		glVertex3f(-w + sr, h + t, f + s);
+		glVertex3f(w - sr, h + t, f + s + r);
+		glVertex3f(-w + sr, h + t, f + s + r);
+		glVertex3f(w, h + m, f + s + r + br);
+		glVertex3f(-w, h + m, f + s + r + br);
+		glVertex3f(w, h, f + s + r + br);
+		glVertex3f(-w, h, f + s + r + br);
+		glVertex3f(w, h, 0);
+		glVertex3f(-w, h, 0);
+	glEnd();
 
 	//=============================================================
 	// Now the cars are simply boxes with different hights. 
