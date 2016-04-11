@@ -1,0 +1,102 @@
+﻿Build started 11.4.2016 7.04.00.
+     1>Project "C:\Users\Kake\Source\Repos\Eurocity\GrTown\GrTown.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\WinFltk\include /I.. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D _VC80_UPGRADE=0x0710 /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Examples\Cars.cpp Examples\Objects.cpp Examples\SimpleBehaviors.cpp Examples\Suburbs.cpp Roads\Drive.cpp Roads\Roads.cpp Behavior.cpp DrawingState.cpp DrawUtils.cpp FlyCamera.cpp GraphicsTownUI.cxx GrObject.cpp GrWorld.cpp MMatrix.cpp TownViewWidget.cpp ..\Utilities\ShaderTools.cpp ..\Utilities\Texture.cpp Main.cpp Ufo.cpp
+         Ufo.cpp
+     1>c:\users\kake\source\repos\eurocity\grtown\ufo.cpp(46): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\kake\source\repos\eurocity\grtown\ufo.cpp(55): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>c:\users\kake\source\repos\eurocity\grtown\ufo.cpp(56): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+         Main.cpp
+         Texture.cpp
+         ShaderTools.cpp
+         TownViewWidget.cpp
+         MMatrix.cpp
+         GrWorld.cpp
+         GrObject.cpp
+         GraphicsTownUI.cxx
+         FlyCamera.cpp
+         DrawUtils.cpp
+         DrawingState.cpp
+         Behavior.cpp
+         Roads.cpp
+         Drive.cpp
+         Suburbs.cpp
+         SimpleBehaviors.cpp
+         Objects.cpp
+         Cars.cpp
+         Generating Code...
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\WinFltk\include /I.. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D _VC80_UPGRADE=0x0710 /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt ..\Utilities\GLee.c ..\Utilities\libtarga.c
+         libtarga.c
+         GLee.c
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Debug\GrTown.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\WinFltk\lib fltkd.lib fltkgld.lib comctl32.lib wsock32.lib opengl32.lib glu32.lib glut32.lib fltkjpegd.lib fltkpngd.lib fltkimagesd.lib fltkzd.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"Debug\GrTown.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"Debug\GrTown.lib" /MACHINE:X86 /SAFESEH:NO Debug\Cars.obj
+         Debug\Objects.obj
+         Debug\SimpleBehaviors.obj
+         Debug\Suburbs.obj
+         Debug\Drive.obj
+         Debug\Roads.obj
+         Debug\Behavior.obj
+         Debug\DrawingState.obj
+         Debug\DrawUtils.obj
+         Debug\FlyCamera.obj
+         Debug\GraphicsTownUI.obj
+         Debug\GrObject.obj
+         Debug\GrWorld.obj
+         Debug\MMatrix.obj
+         Debug\TownViewWidget.obj
+         Debug\GLee.obj
+         Debug\libtarga.obj
+         Debug\ShaderTools.obj
+         Debug\Texture.obj
+         Debug\Main.obj
+         Debug\Ufo.obj
+     1>MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'libcmtd.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
+     1>fltkjpegd.lib(jcomapi.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jcomapi.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jdapimin.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jdapimin.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jdapistd.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jdapistd.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jdatasrc.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jdatasrc.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jdcoefct.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jdcoefct.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jdcolor.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jdcolor.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jddctmgr.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jddctmgr.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jdhuff.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jdhuff.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jdinput.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jdinput.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jdmainct.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jdmainct.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jdmarker.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jdmarker.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jdmaster.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jdmaster.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jdmerge.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jdmerge.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jdphuff.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jdphuff.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jdpostct.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jdpostct.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jdsample.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jdsample.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jerror.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jerror.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jidctflt.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jidctflt.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jidctfst.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jidctfst.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jidctint.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jidctint.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jidctred.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jidctred.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jmemmgr.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jmemmgr.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jmemnobs.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jmemnobs.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jquant1.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jquant1.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jquant2.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jquant2.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkjpegd.lib(jutils.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkjpegd.lib(jutils.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkpngd.lib(png.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkpngd.lib(png.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkpngd.lib(pngerror.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkpngd.lib(pngerror.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkpngd.lib(pngget.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkpngd.lib(pngget.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkpngd.lib(pngmem.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkpngd.lib(pngmem.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkpngd.lib(pngread.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkpngd.lib(pngread.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkpngd.lib(pngrio.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkpngd.lib(pngrio.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkpngd.lib(pngrtran.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkpngd.lib(pngrtran.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkpngd.lib(pngrutil.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkpngd.lib(pngrutil.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkpngd.lib(pngset.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkpngd.lib(pngset.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkpngd.lib(pngtrans.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkpngd.lib(pngtrans.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkzd.lib(adler32.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkzd.lib(adler32.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkzd.lib(crc32.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkzd.lib(crc32.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkzd.lib(inffast.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkzd.lib(inffast.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkzd.lib(inflate.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkzd.lib(inflate.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkzd.lib(inftrees.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkzd.lib(inftrees.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+     1>fltkzd.lib(zutil.obj) : warning LNK4099: PDB 'vc60.pdb' was not found with 'fltkzd.lib(zutil.obj)' or at 'C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\vc60.pdb'; linking object as if no debug info
+         GrTown.vcxproj -> C:\Users\Kake\Source\Repos\Eurocity\GrTown\Debug\GrTown.exe
+     1>Done Building Project "C:\Users\Kake\Source\Repos\Eurocity\GrTown\GrTown.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:10.14

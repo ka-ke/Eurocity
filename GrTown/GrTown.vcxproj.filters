@@ -105,6 +105,9 @@
     <ClInclude Include="..\Utilities\Texture.H">
       <Filter>Utilities\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Ufo.h">
+      <Filter>Examples Objects and Behaviors\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Examples\Cars.cpp">
@@ -166,6 +169,9 @@
     </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Engine Core\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ufo.cpp">
+      <Filter>Examples Objects and Behaviors\Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

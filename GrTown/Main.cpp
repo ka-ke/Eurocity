@@ -12,6 +12,8 @@
 #include "Examples/Objects.H"
 #include "Examples/SimpleBehaviors.H"
 #include "Examples/Cars.H"
+#include "Ufo.h"
+
 
 // for setting up shader paths and textures
 #include "Utilities/ShaderTools.H"
@@ -87,6 +89,12 @@ int main(int /*argc*/, char** /*argv*/)
   GrObject* cube4 = new Cube(0,7.5,0, 5, 1,0,1);
   cube3->add(cube4);
 
+  // make an ufo
+  Ufo* ufo1;
+  ufo1 = new Ufo("ufo", 1);
+  ufo1->laX = 0; ufo1->laY = 0; ufo1->laZ = 0;
+  ufo1->lfX = 70; ufo1->lfY = 50; ufo1->lfZ = 0;
+  add(ufo1);
 
   ////////////////////////////////////////////////////////////////////////
   // now to make a real town!

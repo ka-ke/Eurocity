@@ -47,6 +47,10 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>./;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>./lib;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
@@ -61,7 +65,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>fltkd.lib;fltkgld.lib;comctl32.lib;wsock32.lib;opengl32.lib;glu32.lib;fltkjpegd.lib;fltkpngd.lib;fltkimagesd.lib;fltkzd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>fltkd.lib;fltkgld.lib;comctl32.lib;wsock32.lib;opengl32.lib;glu32.lib;glut32.lib;fltkjpegd.lib;fltkpngd.lib;fltkimagesd.lib;fltkzd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)GrTown.exe</OutputFile>
       <AdditionalLibraryDirectories>..\WinFltk\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -120,6 +124,7 @@
     <ClInclude Include="..\Utilities\libtarga.h" />
     <ClInclude Include="..\Utilities\ShaderTools.H" />
     <ClInclude Include="..\Utilities\Texture.H" />
+    <ClInclude Include="Ufo.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Examples\Cars.cpp" />
@@ -142,6 +147,7 @@
     <ClCompile Include="..\Utilities\ShaderTools.cpp" />
     <ClCompile Include="..\Utilities\Texture.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Ufo.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
