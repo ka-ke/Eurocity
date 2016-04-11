@@ -119,6 +119,7 @@
     <ClInclude Include="GrTown_PCH.H" />
     <ClInclude Include="GrWorld.H" />
     <ClInclude Include="MMatrix.H" />
+    <ClInclude Include="Tank.h" />
     <ClInclude Include="TownViewWidget.H" />
     <ClInclude Include="..\Utilities\GLee.h" />
     <ClInclude Include="..\Utilities\libtarga.h" />
@@ -141,6 +142,7 @@
     <ClCompile Include="GrObject.cpp" />
     <ClCompile Include="GrWorld.cpp" />
     <ClCompile Include="MMatrix.cpp" />
+    <ClCompile Include="Tank.cpp" />
     <ClCompile Include="TownViewWidget.cpp" />
     <ClCompile Include="..\Utilities\GLee.c" />
     <ClCompile Include="..\Utilities\libtarga.c" />

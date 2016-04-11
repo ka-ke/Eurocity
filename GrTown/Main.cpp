@@ -13,6 +13,7 @@
 #include "Examples/SimpleBehaviors.H"
 #include "Examples/Cars.H"
 #include "Ufo.h"
+#include "Tank.h"
 
 
 // for setting up shader paths and textures
@@ -89,13 +90,6 @@ int main(int /*argc*/, char** /*argv*/)
   GrObject* cube4 = new Cube(0,7.5,0, 5, 1,0,1);
   cube3->add(cube4);
 
-  // make an ufo
-  Ufo* ufo1;
-  ufo1 = new Ufo("ufo", 1);
-  ufo1->laX = 0; ufo1->laY = 0; ufo1->laZ = 0;
-  ufo1->lfX = 70; ufo1->lfY = 50; ufo1->lfZ = 0;
-  add(ufo1);
-
   ////////////////////////////////////////////////////////////////////////
   // now to make a real town!
   int r,c;
@@ -131,11 +125,12 @@ int main(int /*argc*/, char** /*argv*/)
 #ifndef TESTCARS
   // add some cars
   for(int r=0; r<50; r++) {
-	Car* c;
-	switch(rand() % 3) {
+	GrObject* c;
+	switch(rand() % 4) {
 	  case 0: c = new Van(rand()); break;
 	  case 1: c = new SUV(rand()); break;
 	  case 2: c = new HatchBack(rand()); break;
+	  case 3: c = new Tank("tank", rand()); break;
 	}
 	add(c);
     new RandomDrive(c,theRoads[rand() % theRoads.size()],.2f,rand() % 2);
@@ -152,6 +147,11 @@ int main(int /*argc*/, char** /*argv*/)
   new RandomDrive(c2,theRoads[8],.5,0,1);
 
 #endif
+
+  // make an ufo
+  Ufo* ufo1;
+  ufo1 = new Ufo("ufo", 1);
+  add(ufo1, 50, 100, 0);
 
 // ========== TODO1: ===================
 // The following code added a round race track, 
