@@ -12,6 +12,7 @@
 
 #include "../GrObject.H"
 #include "../DrawingState.H"
+#include <GL\glut.h>
 
 // a simple tree - a cone like a pine
 class SimpleTree1: public GrObject {
@@ -119,3 +120,13 @@ class SimpleSubdivision : public GrObject {
   SimpleSubdivision(int nHouses);
 };
 
+/***********************************************************************/
+// a FerryWheel plot - a ferrywheel with adustable numbers of cabins.
+
+class FerryWheel : public GrObject{
+	public:
+		FerryWheel(int cab);
+		int cabins;
+		float angle;
+		virtual void draw(DrawingState*);
+};

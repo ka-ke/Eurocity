@@ -68,3 +68,17 @@ void TurnAlways::simulateUntil(unsigned long t)
   lastV = t;
 }
 
+RunFerryWheel::RunFerryWheel(GrObject* o, float v)
+: Behavior(o), vel(v)
+{
+}
+
+void RunFerryWheel::simulateUntil(unsigned long t)
+{
+	unsigned long dt = t - lastV;
+	float secs = ((float) dt) / 1000;
+	lastV = t;
+	FerryWheel* fw = dynamic_cast<FerryWheel*>(owner);
+	fw->angle += 0.5;
+	lastV = t;
+}

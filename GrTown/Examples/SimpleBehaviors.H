@@ -7,6 +7,7 @@
 // simple example behaviors - something to learn from
 
 #include "../Behavior.H"
+#include "../Examples/Suburbs.H"
 
 ////////////////////////////////////////////////////////////////////////
 // a simple behavior: spin around the center point
@@ -40,6 +41,13 @@ public:
   TurnAlways(GrObject* owner, float vel = .1);
   float vel;
   virtual void simulateUntil(unsigned long);
+};
+
+class RunFerryWheel : public Behavior {
+	public:
+		RunFerryWheel(GrObject* owner, float vel = .1);
+		float vel;
+		virtual void simulateUntil(unsigned long);
 };
 
 

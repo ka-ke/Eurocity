@@ -27,7 +27,7 @@
 
 
 // define this to get 2 cars that always turn
-//#define TESTCARS
+// #define TESTCARS
 
 const int numCars = 1;
 const int nGrids = 5;
@@ -55,6 +55,13 @@ int main(int /*argc*/, char** /*argv*/)
   o1->laX = 0; o1->laY = 0; o1->laZ = 0;
   o1->lfX = -50; o1->lfY = 100; o1->lfZ = 300;
   add(o1,-100,0,100,pi/2.f);
+
+  GrObject* o2 = new FerryWheel(10);
+  o2->interesting = true;
+  o2->laX = 0; o2->laY = 65; o2->laZ = 20;
+  o2->lfX = -70; o2->lfY = 10; o2->lfZ = 160;
+  add(o2, 1200, 0, 600, pi / 2.f);
+  new RunFerryWheel(o2);
 
   // *****************************************************************
   //  Make your town here
@@ -87,36 +94,41 @@ int main(int /*argc*/, char** /*argv*/)
   GrObject* cube4 = new Cube(0,7.5,0, 5, 1,0,1);
   cube3->add(cube4);
 
-
   ////////////////////////////////////////////////////////////////////////
   // now to make a real town!
   int r,c;
   // make a 5x5 grid of town blocks - 5 houses per
-  for( r=0; r<5; r++) {
-	  for( c=0; c<7; c++) {
-		  add(new SimpleSubdivision(4),static_cast<float>(r*430),0,static_cast<float>(c*230));
-		  add(new StraightRoad(static_cast<float>(r*430),static_cast<float>(c*230),static_cast<float>(r*430+400),static_cast<float>(c*230)));
+  for( r=0; r<6; r++) {
+	  for( c=0; c<6; c++) {
+		  if (!(((r == 2) || (r == 3)) && ((c == 2) || (c == 3)))){
+			  add(new SimpleSubdivision(4), static_cast<float>(r * 430), 0, static_cast<float>(c * 230));
+			  add(new StraightRoad(static_cast<float>(r * 430), static_cast<float>(c * 230), static_cast<float>(r * 430 + 400), static_cast<float>(c * 230)));
+		  }
+		  if(c == 2)add(new StraightRoad(static_cast<float>(r * 430), static_cast<float>(c * 230), static_cast<float>(r * 430 + 400), static_cast<float>(c * 230)));
 	  }
+	  add(new StraightRoad(static_cast<float>(r * 430), static_cast<float>(c * 230), static_cast<float>(r * 430 + 400), static_cast<float>(c * 230)));
   }
   //// make cross streets
-  for(int r=0; r<=5; r++) {
+  for(int r=0; r<=6; r++) {
 	  for(c=0; c<6; c++) {
-		  add(new StraightRoad(static_cast<float>(r*430 - 15), static_cast<float>(c*230 + 15), static_cast<float>(r*430 - 15), static_cast<float>(c*230+215)));
+		  if(!((r == 3) && ((c == 2) || (c == 3))))add(new StraightRoad(static_cast<float>(r * 430 - 15), static_cast<float>(c * 230 + 15), static_cast<float>(r * 430 - 15), static_cast<float>(c * 230 + 215)));
 	  }
   }
 
-  //// make intersections
-  //// make an intersection intersesting so we can look at it
-  for(int r=0; r<=5; r++) {
+  // make intersections
+  // make an intersection intersesting so we can look at it
+  for(int r=0; r<7; r++) {
 	  for(c=0; c<7; c++) {
-		  GrObject* g = new Intersection(static_cast<float>(r*430-15), static_cast<float>(c*230));
-		  if ( (r==2) && (c==3) ) {
-			  g->interesting = 1;
-			  g->name = "Intersection(2,3)";
-			  g->laX = static_cast<float>(r*430-15);    g->laY = 0;    g->laZ = static_cast<float>(c*230);
-			  g->lfX = static_cast<float>(r*430+25);   g->lfY = 100;   g->lfZ = static_cast<float>(c*230+150);
+		  if(!((r == 3) && (c == 3))){
+			  GrObject* g = new Intersection(static_cast<float>(r * 430 - 15), static_cast<float>(c * 230));
+			  if ((r == 1) && (c == 4)) {
+				  g->interesting = 1;
+				  g->name = "Intersection(1,4)";
+				  g->laX = static_cast<float>(r * 430 - 15);    g->laY = 0;    g->laZ = static_cast<float>(c * 230);
+				  g->lfX = static_cast<float>(r * 430 + 25);   g->lfY = 100;   g->lfZ = static_cast<float>(c * 230 + 150);
+			  }
+			  add(g);
 		  }
-		  add(g);
 	  }
   }
 
