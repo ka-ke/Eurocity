@@ -77,7 +77,6 @@ void TownViewWidget::draw()
   glFrontFace(GL_CCW);
 
 	// set up the camera for drawing!
-
   glEnable( GL_DEPTH_TEST );
 
   glMatrixMode(GL_PROJECTION);

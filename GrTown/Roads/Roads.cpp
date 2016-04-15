@@ -103,7 +103,7 @@ cx(cx_), cz(cz_), r(r_)
 void RoundRoad::roadDraw()
 {
 	glBegin(GL_QUAD_STRIP);
-	for (float u = 0; u <= 1.01; u += .1f) {
+	for (float u = 0; u <= 1.01; u += .01f) {
 		float s = sin(2 * pi*u);
 		float c = cos(2 * pi*u);
 

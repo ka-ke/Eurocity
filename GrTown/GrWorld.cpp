@@ -60,11 +60,21 @@ void setupLights(DrawingState* dr)
   // depending on time of day, the lighting changes
   // ambient is either night or day
   if ((dr->timeOfDay >= 5) && (dr->timeOfDay <=19)) {
-	float a0[] = {.4f,.4f,.4f,.4f};
-	glLightfv(GL_LIGHT0, GL_AMBIENT, a0);
+	  GLfloat ambientColor[] = { 0.4, 0.4, 0.4, 1 };
+	  GLfloat lightColor0[] = { 0.8, 0.8, 0.8, 1 };
+	  GLfloat lightSpecular[] = { 0.7, 0.7, 0.7, 1 };
+
+	  glLightfv(GL_LIGHT0, GL_AMBIENT, ambientColor);
+	  glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor0);
+	  glLightfv(GL_LIGHT0, GL_SPECULAR, lightSpecular);
   } else {
-	float a1[] = {.2f,.2f,.2f,.2f};
-	glLightfv(GL_LIGHT0, GL_AMBIENT, a1);
+	  GLfloat ambientColor[] = { 0.2, 0.2, 0.2, 1 };
+	  GLfloat lightColor0[] = { 0.8, 0.8, 0.8, 1 };
+	  GLfloat lightSpecular[] = { 0.7, 0.7, 0.7, 1 };
+
+	  glLightfv(GL_LIGHT0, GL_AMBIENT, ambientColor);
+	  glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor0);
+	  glLightfv(GL_LIGHT0, GL_SPECULAR, lightSpecular);
   }
   // directional, if its on, depends on what hour it is
   float pos[4] = {0,0,0,0};

@@ -659,9 +659,11 @@ FerryWheel::FerryWheel(int cab){
 
 void FerryWheel::draw(DrawingState*){
 	glPushMatrix();
-	glScaled(15, 15, 15);
+	glDisable(GL_COLOR_MATERIAL);
+	glScaled(30, 30, 30);
 	createFWBase();
 	createFWWheel(angle,cabins);
+	glEnable(GL_COLOR_MATERIAL);
 	glPopMatrix();
 }
 
