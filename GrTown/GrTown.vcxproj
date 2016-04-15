@@ -104,6 +104,7 @@
     <ClInclude Include="Examples\Objects.H" />
     <ClInclude Include="Examples\SimpleBehaviors.H" />
     <ClInclude Include="Examples\Suburbs.H" />
+    <ClInclude Include="Humans.h" />
     <ClInclude Include="Roads\Drive.H" />
     <ClInclude Include="Roads\Roads.H" />
     <ClInclude Include="Behavior.H" />
@@ -120,12 +121,14 @@
     <ClInclude Include="..\Utilities\libtarga.h" />
     <ClInclude Include="..\Utilities\ShaderTools.H" />
     <ClInclude Include="..\Utilities\Texture.H" />
+    <ClInclude Include="Walking.H" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Examples\Cars.cpp" />
     <ClCompile Include="Examples\Objects.cpp" />
     <ClCompile Include="Examples\SimpleBehaviors.cpp" />
     <ClCompile Include="Examples\Suburbs.cpp" />
+    <ClCompile Include="Humans.cpp" />
     <ClCompile Include="Roads\Drive.cpp" />
     <ClCompile Include="Roads\Roads.cpp" />
     <ClCompile Include="Behavior.cpp" />
@@ -142,6 +145,7 @@
     <ClCompile Include="..\Utilities\ShaderTools.cpp" />
     <ClCompile Include="..\Utilities\Texture.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Walking.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

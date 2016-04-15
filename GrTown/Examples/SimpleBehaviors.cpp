@@ -68,3 +68,34 @@ void TurnAlways::simulateUntil(unsigned long t)
   lastV = t;
 }
 
+RunFerryWheel::RunFerryWheel(GrObject* o, float v)
+: Behavior(o), vel(v)
+{
+}
+
+void RunFerryWheel::simulateUntil(unsigned long t)
+{
+	unsigned long dt = t - lastV;
+	float secs = ((float) dt) / 1000;
+	lastV = t;
+	FerryWheel* fw = dynamic_cast<FerryWheel*>(owner);
+	fw->angle += 0.5;
+	lastV = t;
+}
+
+Walking::Walking(GrObject* o, float v)
+: Behavior(o), vel(v)
+{
+}
+
+void Walking::simulateUntil(unsigned long t)
+{
+	unsigned long dt = t - lastV;
+	float secs = ((float)dt) / 1000;
+	lastV = t;
+	Human* h = dynamic_cast<Human*>(owner);
+	if ((h->motionPositionInv == false) && (h->motionPosition < 1)) h->motionPosition += 0.1;
+	else if ((h->motionPositionInv == true) && (h->motionPosition > -1)) h->motionPosition -= 0.1;
+	else h->motionPositionInv = !h->motionPositionInv;
+	lastV = t;
+}

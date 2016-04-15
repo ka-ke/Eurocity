@@ -462,7 +462,7 @@ SimpleSubdivision::SimpleSubdivision(int nh)
 	// street lights in front of every other house
 	// alternate sides of the street
 	for(int sl=0; sl<nh; sl ++) {
-		add(new StreetLight(sl%2 ? 9 : -9), static_cast<float>(sl*100 + 25), 0, (float)((sl%2) ? 8 : -9));
+		add(new StreetLight(sl%2 ? 9 : -9), static_cast<float>(sl*100 + 25), 0, (float)((sl%2) ? 8 : 223));
 	}
 	
     // add houses - one on each side of the street
@@ -471,11 +471,199 @@ SimpleSubdivision::SimpleSubdivision(int nh)
 		GrObject* g2 = new SimpleLot(rand(), rand());
 
 		add(g1, (float) (hc*100)    ,0, 15, 0);
-		add(g2, (float) (hc*100+100),0,-15,pi);
+		add(g2, (float) (hc*100+100),0,215,pi);
 	}
 
   add(new Sign(4,4,4,"stop.png",octagon),(float)(100*nh-2),0,17,-(3.141592f/2.f));
-  add(new Sign(4,4,4,"stop.png",octagon),  2,0,-17 ,(3.141592f/2.f));
+  add(new Sign(4,4,4,"stop.png",octagon),  2,0,217 ,(3.141592f/2.f));
 }
 
+/***********************************************************************/
+// ferry wheel
+
+void createFWBase(){
+	glPushMatrix();
+
+	//material for Plate
+	GLfloat gaGreen[] = { 0.2, 0.8, 0.1, 1 };
+	GLfloat gaWhite[] = { 0.8, 1, 0.8, 1 };
+
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, gaGreen);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, gaGreen);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, gaWhite);
+	glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 20.0);
+
+	//draw base plate
+	glScalef(10, 0.5, 4);
+	glutSolidCube(1);
+	glPopMatrix();
+
+
+	//material for Poles
+	GLfloat gaGray[] = { 0.3, 0.3, 0.3, 1 };
+
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, gaGray);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, gaGray);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, gaWhite);
+	glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 20.0);
+
+	//Draw first pole
+	glPushMatrix();
+	glRotatef(-90, 1, 0, 0);
+	glTranslatef(0, 1.5, 0);
+	GLUquadricObj *obj = gluNewQuadric();
+	gluCylinder(obj, 0.25, 0.25, 5, 32, 1);
+
+	//Draw first beering
+	glPushMatrix();
+	glTranslatef(0, 0, 5.5);
+	glRotatef(90, 1, 0, 0);
+	glutSolidTorus(0.25, 0.5, 32, 32);
+
+	//Draw second pole
+	glPopMatrix();
+	glTranslatef(0, -3, 0);
+	gluCylinder(obj, 0.25, 0.25, 5, 32, 1);
+
+	//Draw second beering
+	glPushMatrix();
+	glTranslatef(0, 0, 5.5);
+	glRotatef(90, 1, 0, 0);
+	glutSolidTorus(0.25, 0.5, 32, 32);
+
+	//Draw main Axis
+	glRotatef(180, 1, 0, 0);
+	glTranslatef(0, 0, -0.5);
+	gluSphere(obj, 0.5, 32, 32);
+	gluCylinder(obj, 0.5, 0.5, 4, 32, 1);
+	glTranslatef(0, 0, 4);
+	gluSphere(obj, 0.5, 32, 32);
+	glPopMatrix();
+
+	glPopMatrix();
+}
+
+//create ferry wheel Cabin
+
+void createFWCabin(){
+	GLUquadricObj *obj = gluNewQuadric();
+
+	glPushMatrix();
+	//create hanging axis
+	glPushMatrix();
+	glTranslatef(0, 1.1, 0);
+	glRotatef(90, 1, 0, 0);
+	gluCylinder(obj, 0.1, 0.1, 2.2, 32, 1);
+	glPopMatrix();
+
+	//create main axis
+	glRotatef(180, 1, 0, 0);
+	gluCylinder(obj, 0.05, 0.05, 1.2, 32, 1);
+
+	//create roof
+	GLfloat gaRed[] = { 0.8, 0.1, 0.1, 1 };
+	GLfloat gaWhite[] = { 1, 1, 1, 1 };
+
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, gaRed);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, gaRed);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, gaWhite);
+	glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 20.0);
+
+	glTranslatef(0, 0, 0.1);
+	gluCylinder(obj, 0.05, 0.8, 0.2, 32, 1);
+
+	//create body
+	GLfloat gaRandom[] = { 0.8, 0.5, 0.1, 1 };
+
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, gaRandom);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, gaRandom);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, gaWhite);
+	glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 20.0);
+
+	glTranslatef(0, 0, 1.1);
+	glRotatef(180, 1, 0, 0);
+	gluCylinder(obj, 0.7, 0.7, 0.4, 32, 1);
+	gluDisk(obj, 0, 0.7, 32, 1);
+	glPopMatrix();
+}
+
+//create farry wheel wheel
+
+void createFWWheel(float angle, int axisCount){
+	GLUquadricObj *obj = gluNewQuadric();
+
+	glPushMatrix();
+
+	//material for wheel
+	GLfloat gaBlue[] = { 0.2, 0.6, 0.8, 1 };
+	GLfloat gaWhite[] = { 1, 1, 1, 1 };
+
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, gaBlue);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, gaBlue);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, gaWhite);
+	glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 20.0);
+
+	//for loop to create all axis
+	int x = 0;
+	glTranslatef(0, 5.5, 1.1);
+	glRotatef(angle, 0, 0, 1);
+
+	//
+	glPushMatrix();
+	glutSolidTorus(0.15, 4, 32, 64);
+	glRotatef(-90, 1, 0, 0);
+
+	//for loop to create all axis
+	for (x = axisCount; x > 0; x--){
+		gluCylinder(obj, 0.15, 0.1, 4, 32, 1);
+		glRotatef((360 / axisCount), 0, 1, 0);
+	}
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(0, 0, -2.2);
+	glutSolidTorus(0.15, 4, 32, 64);
+	glRotatef(-90, 1, 0, 0);
+
+	//for loop to create all axis ant the cabins
+
+	float tmpAngle = -angle;  //used for backrotation
+	for (x = axisCount; x > 0; x--){
+		// Create Axis
+		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, gaBlue);
+		glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, gaBlue);
+		glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, gaWhite);
+		glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 20.0);
+
+		gluCylinder(obj, 0.15, 0.1, 4, 32, 1);
+
+		// Create Cabin
+		glPushMatrix();
+		glTranslatef(0, -1.1, 4);
+		glRotatef(-tmpAngle, 0, 1, 0);
+		createFWCabin();
+		glPopMatrix();
+
+		glRotatef((360 / axisCount), 0, 1, 0);
+		tmpAngle += (360 / axisCount);
+	}
+	glPopMatrix();
+
+	glPopMatrix();
+}
+
+FerryWheel::FerryWheel(int cab){
+	cabins = cab;
+	angle = 0;
+}
+
+void FerryWheel::draw(DrawingState*){
+	glPushMatrix();
+	glDisable(GL_COLOR_MATERIAL);
+	glScaled(30, 30, 30);
+	createFWBase();
+	createFWWheel(angle,cabins);
+	glEnable(GL_COLOR_MATERIAL);
+	glPopMatrix();
+}
 

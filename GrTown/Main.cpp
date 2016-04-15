@@ -12,6 +12,7 @@
 #include "Examples/Objects.H"
 #include "Examples/SimpleBehaviors.H"
 #include "Examples/Cars.H"
+#include "Humans.h"
 
 // for setting up shader paths and textures
 #include "Utilities/ShaderTools.H"
@@ -47,14 +48,20 @@ int main(int /*argc*/, char** /*argv*/)
 	shaderPaths.push_back("Shaders");
 	shaderPaths.push_back("../Shaders");
 
-/*
+
   // add some more stuff
   GrObject* o1 = new Church;
   o1->interesting = true;
   o1->laX = 0; o1->laY = 0; o1->laZ = 0;
   o1->lfX = -50; o1->lfY = 100; o1->lfZ = 300;
   add(o1,-100,0,100,pi/2.f);
-*/
+
+  GrObject* o2 = new FerryWheel(10);
+  o2->interesting = true;
+  o2->laX = 0; o2->laY = 65; o2->laZ = 20;
+  o2->lfX = -70; o2->lfY = 10; o2->lfZ = 160;
+  add(o2, 1500, 0, 690, pi / 3.f);
+  new RunFerryWheel(o2);
 
   // *****************************************************************
   //  Make your town here
@@ -87,43 +94,48 @@ int main(int /*argc*/, char** /*argv*/)
   GrObject* cube4 = new Cube(0,7.5,0, 5, 1,0,1);
   cube3->add(cube4);
 
-
   ////////////////////////////////////////////////////////////////////////
   // now to make a real town!
   int r,c;
   // make a 5x5 grid of town blocks - 5 houses per
-  for( r=0; r<5; r++) {
-	  for( c=0; c<5; c++) {
-		  add(new SimpleSubdivision(5),static_cast<float>(r*530),0,static_cast<float>(c*230));
-		  add(new StraightRoad(static_cast<float>(r*530),static_cast<float>(c*230),static_cast<float>(r*530+500),static_cast<float>(c*230)));
+  for( r=0; r<6; r++) {
+	  for( c=0; c<6; c++) {
+		  if (!(((r == 2) || (r == 3)) && ((c == 2) || (c == 3)))){
+			  add(new SimpleSubdivision(4), static_cast<float>(r * 430), 0, static_cast<float>(c * 230));
+			  add(new StraightRoad(static_cast<float>(r * 430), static_cast<float>(c * 230), static_cast<float>(r * 430 + 400), static_cast<float>(c * 230)));
+		  }
+		  if(c == 2)add(new StraightRoad(static_cast<float>(r * 430), static_cast<float>(c * 230), static_cast<float>(r * 430 + 400), static_cast<float>(c * 230)));
 	  }
+	  add(new StraightRoad(static_cast<float>(r * 430), static_cast<float>(c * 230), static_cast<float>(r * 430 + 400), static_cast<float>(c * 230)));
   }
   //// make cross streets
-  for(int r=0; r<=5; r++) {
-	  for(c=0; c<4; c++) {
-		  add(new StraightRoad(static_cast<float>(r*530 - 15), static_cast<float>(c*230 + 15), static_cast<float>(r*530 - 15), static_cast<float>(c*230+215)));
+  for(int r=0; r<=6; r++) {
+	  for(c=0; c<6; c++) {
+		  if(!((r == 3) && ((c == 2) || (c == 3))))add(new StraightRoad(static_cast<float>(r * 430 - 15), static_cast<float>(c * 230 + 15), static_cast<float>(r * 430 - 15), static_cast<float>(c * 230 + 215)));
 	  }
   }
 
-  //// make intersections
-  //// make an intersection intersesting so we can look at it
-  for(int r=0; r<=5; r++) {
-	  for(c=0; c<5; c++) {
-		  GrObject* g = new Intersection(static_cast<float>(r*530-15), static_cast<float>(c*230));
-		  if ( (r==2) && (c==3) ) {
-			  g->interesting = 1;
-			  g->name = "Intersection(2,3)";
-			  g->laX = static_cast<float>(r*530-15);    g->laY = 0;    g->laZ = static_cast<float>(c*230);
-			  g->lfX = static_cast<float>(r*530+25);   g->lfY = 100;   g->lfZ = static_cast<float>(c*230+150);
+  // make intersections
+  // make an intersection intersesting so we can look at it
+  for(int r=0; r<7; r++) {
+	  for(c=0; c<7; c++) {
+		  if(!((r == 3) && (c == 3))){
+			  GrObject* g = new Intersection(static_cast<float>(r * 430 - 15), static_cast<float>(c * 230));
+			  if ((r == 1) && (c == 4)) {
+				  g->interesting = 1;
+				  g->name = "Intersection(1,4)";
+				  g->laX = static_cast<float>(r * 430 - 15);    g->laY = 0;    g->laZ = static_cast<float>(c * 230);
+				  g->lfX = static_cast<float>(r * 430 + 25);   g->lfY = 100;   g->lfZ = static_cast<float>(c * 230 + 150);
+			  }
+			  add(g);
 		  }
-		  add(g);
 	  }
   }
 
 #ifndef TESTCARS
   // add some cars
   for(int r=0; r<50; r++) {
-	Car* c;
+	GrObject* c;
 	switch(rand() % 3) {
 	  case 0: c = new Van(rand()); break;
 	  case 1: c = new SUV(rand()); break;
@@ -149,25 +161,26 @@ int main(int /*argc*/, char** /*argv*/)
 // The following code added a round race track, 
 //  you're required to replace it with an elliptical race track and put two cars running on it.
 
-/*
+
 	// a race track
-    Road* t = new RoundRoad(-250,250,100);
+    Road* t = new RoundRoad(1100,690,180);
 	add(t);
 	t->name = "Track";
 	t->interesting = true;
-	t->laX = -250; t->laY = 0;   t->laZ = 250;
-	t->lfX = -600; t->lfY = 200; t->lfZ = 450;
+	t->laX = 1100; t->laY = 0;   t->laZ = 690;
+	t->lfX = 600; t->lfY = 200; t->lfZ = 450;
 	// make cars go around the track
-	Car* h = new HatchBack(1);
-	h->name="Race1";		// warning! we can only do this since we don't delete
+	Human* h = new Human("Daniel",0);
 	add(h);
-	new SimpleDrive(h,t,0,0);
-	h = new HatchBack(3);
-	h->name="Race2";		// warning! we can only do this since we don't delete
+	new Walking(h);
+	Drive* d = new SimpleDrive(h, t, 0, 0);
+	d->speed *= 0.1;
+	h = new Human("Hans",0);
 	add(h);
-	Drive* d = new SimpleDrive(h,t,0,1);
-	d->speed *= 2;
-*/
+	new Walking(h);
+	d = new SimpleDrive(h,t,0,1);
+	d->speed *= 0.2;
+
 
   // *****************************************************************
   // now make a UI

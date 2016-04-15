@@ -43,6 +43,15 @@
     <Filter Include="Utilities\Source">
       <UniqueIdentifier>{8fef07f1-dc7d-45f0-878f-0a2662aba493}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Motions">
+      <UniqueIdentifier>{b7ed088b-c72b-42ff-b883-dbd9e7d7fb0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Motions\Headers">
+      <UniqueIdentifier>{70eb3a93-5843-4977-9bf1-aa71f29ba695}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Motions\Source">
+      <UniqueIdentifier>{0a28025f-1571-46d9-8525-d6140cf20444}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Examples\Cars.H">
@@ -105,6 +114,12 @@
     <ClInclude Include="..\Utilities\Texture.H">
       <Filter>Utilities\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Humans.h">
+      <Filter>Examples Objects and Behaviors\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Walking.H">
+      <Filter>Motions\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Examples\Cars.cpp">
@@ -166,6 +181,12 @@
     </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Engine Core\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Humans.cpp">
+      <Filter>Examples Objects and Behaviors\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Walking.cpp">
+      <Filter>Motions\Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
