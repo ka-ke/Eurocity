@@ -122,6 +122,7 @@
     <ClInclude Include="..\Utilities\libtarga.h" />
     <ClInclude Include="..\Utilities\ShaderTools.H" />
     <ClInclude Include="..\Utilities\Texture.H" />
+    <ClInclude Include="Ufo.h" />
     <ClInclude Include="Walking.H" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +148,7 @@
     <ClCompile Include="..\Utilities\ShaderTools.cpp" />
     <ClCompile Include="..\Utilities\Texture.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Ufo.cpp" />
     <ClCompile Include="Walking.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

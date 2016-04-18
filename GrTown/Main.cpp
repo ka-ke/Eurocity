@@ -14,7 +14,7 @@
 #include "Examples/Cars.H"
 #include "Humans.h"
 #include "Fountain.H"
-
+#include "Ufo.h"
 
 // for setting up shader paths and textures
 #include "Utilities/ShaderTools.H"
@@ -151,6 +151,7 @@ int main(int /*argc*/, char** /*argv*/)
 	t->lfX = 600; t->lfY = 200; t->lfZ = 450;
 	// make joggers go around the track
 	int zombify = 0;
+	//zombify not in use atm
 
 	Human* h = new Human("Daniel", zombify);
 	add(h);
@@ -163,6 +164,35 @@ int main(int /*argc*/, char** /*argv*/)
 	d = new SimpleDrive(h,t,0,1);
 	d->speed *= 0.2;
 
+	// make an ufo that patrols over the city
+	for (int ufoN = 0; ufoN < 1; ufoN++){
+
+		Ufo* ufo1;
+		ufo1 = new Ufo("ufo", ufoN);
+		add(ufo1, ufo1->position, 500, ufo1->position);
+		new RandomFly(ufo1);
+		new Descend(ufo1);
+	}
+
+	// make an ufo that captures people every night
+	Ufo* ufo2;
+	ufo2 = new Ufo("ufo", 101);
+	add(ufo2, 50, 100, 70);
+	new Descend(ufo2);
+	new Spin(ufo2);
+
+	h = new Human("Unlucky", rand()%3);
+	add(h, 50, 0, 70);
+	new Walking(h);
+	new Ascend(h);
+	d->speed *= 0.1;
+
+	// big and scary mothership
+	Ufo* ufoBig;
+	ufoBig = new Ufo("ufo", 1000);
+	ufoBig->size = 80;
+	add(ufoBig, 1100, 2000, 690);
+	new Descend(ufoBig);
 
   // *****************************************************************
   // now make a UI

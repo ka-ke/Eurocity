@@ -24,7 +24,7 @@ Character characters[] = {
 const int nCharacters = 3;
 
 ///////////////////////////////////////////////////////
-// the generic car...
+// the generic dude...
 int HumanCtr = 0;
 
 //Colors

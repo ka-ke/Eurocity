@@ -66,3 +66,23 @@ public:
 	virtual void simulateUntil(unsigned long);
 };
 
+class RandomFly : public Behavior {
+public:
+	RandomFly(GrObject* owner, float vel = 10);
+	float vel;
+	virtual void simulateUntil(unsigned long);
+};
+
+class Descend : public Behavior {
+public:
+	Descend(GrObject* owner, float vel = 10);
+	float vel;
+	virtual void simulateUntil(unsigned long);
+};
+
+class Ascend : public Behavior {
+public:
+	Ascend(GrObject* owner, float vel = 10);
+	float vel;
+	virtual void simulateUntil(unsigned long);
+};
