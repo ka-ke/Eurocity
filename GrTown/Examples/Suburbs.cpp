@@ -23,6 +23,7 @@ SimpleTree1::SimpleTree1(float h, float r)
 }
 void SimpleTree1::draw(DrawingState*)
 {
+	fetchTexture("pine.bmp", true, true);
   // cone for the body
   glFrontFace(GL_CW);
   glColor3f(0.f,.6f,.3f);
@@ -30,15 +31,15 @@ void SimpleTree1::draw(DrawingState*)
   glNormal3f(0,1,0);
   glVertex3f(0,height,0);
   glNormal3f(1,0,0);
-  glVertex3f(radius,height/4,0);
+  glTexCoord2f(1/2, 1/2); glVertex3f(radius, height / 4, 0);
   glNormal3f(0,0,1);
-  glVertex3f(0,height/4,radius);
+  glTexCoord2f(0, 0); glVertex3f(0, height / 4, radius);
   glNormal3f(-1,0,0);
-  glVertex3f(-radius,height/4,0);
+  glTexCoord2f(0, 1); glVertex3f(-radius, height / 4, 0);
   glNormal3f(0,0,-1);
-  glVertex3f(0,height/4,-radius);
+  glTexCoord2f(1, 1); glVertex3f(0, height / 4, -radius);
   glNormal3f(1,0,0);
-  glVertex3f(radius,height/4,0);
+  glTexCoord2f(1, 0); glVertex3f(radius, height / 4, 0);
   glEnd();
   glFrontFace(GL_CCW);
   // stem
