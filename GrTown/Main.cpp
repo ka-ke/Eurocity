@@ -13,6 +13,8 @@
 #include "Examples/SimpleBehaviors.H"
 #include "Examples/Cars.H"
 #include "Humans.h"
+#include "Fountain.H"
+
 
 // for setting up shader paths and textures
 #include "Utilities/ShaderTools.H"
@@ -62,6 +64,13 @@ int main(int /*argc*/, char** /*argv*/)
   o2->lfX = -70; o2->lfY = 10; o2->lfZ = 160;
   add(o2, 1500, 0, 690, pi / 3.f);
   new RunFerryWheel(o2);
+
+  GrObject* o3 = new Fountain("myFountain",120);
+  o3->interesting = true;
+  o3->laX = 0; o3->laY = 0; o3->laZ = 0;
+  o3->lfX = -100; o3->lfY = 100; o3->lfZ = 300;
+  add(o3, 1100, 0, 690, pi / 3.f);
+  new Spray(o3);
 
   // *****************************************************************
   //  Make your town here

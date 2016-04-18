@@ -43,4 +43,8 @@ const float pi = 3.1415927f; // windows won't give me one of these
 void lookatMatrix(float ex, float ey, float ez, 
 				  float ax, float ay, float az, Matrix r);
 
+void billboardCheatSphericalBegin();
+
+void billboardEnd();
+
 #endif

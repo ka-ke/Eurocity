@@ -120,6 +120,9 @@
     <ClInclude Include="Walking.H">
       <Filter>Motions\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Fountain.H">
+      <Filter>Examples Objects and Behaviors\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Examples\Cars.cpp">
@@ -187,6 +190,9 @@
     </ClCompile>
     <ClCompile Include="Walking.cpp">
       <Filter>Motions\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Fountain.cpp">
+      <Filter>Examples Objects and Behaviors\Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

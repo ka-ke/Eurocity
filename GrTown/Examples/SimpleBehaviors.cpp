@@ -99,3 +99,25 @@ void Walking::simulateUntil(unsigned long t)
 	else h->motionPositionInv = !h->motionPositionInv;
 	lastV = t;
 }
+
+Spray::Spray(GrObject* o, float v)
+: Behavior(o), vel(v)
+{
+}
+
+void Spray::simulateUntil(unsigned long t)
+{
+	unsigned long dt = t - lastV;
+	float secs = ((float)dt) / 1000;
+	lastV = t;
+	Fountain* f = dynamic_cast<Fountain*>(owner);
+	int i;
+	for (i = 0; i < 1500; i++){
+		double x = f->particles[i][1] + 0.5;
+		if(x>40)x = 0.5;
+		double y = (-0.25 * pow(x, 2)) + (10 * x);
+		f->particles[i][1] = x;
+		f->particles[i][2] = y;
+	}
+	lastV = t;
+}

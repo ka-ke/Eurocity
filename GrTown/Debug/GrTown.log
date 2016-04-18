@@ -1,13 +1,15 @@
-﻿Der Buildvorgang wurde am 15.04.2016 12:05:24 gestartet.
+﻿Der Buildvorgang wurde am 18.04.2016 15:01:43 gestartet.
      1>Projekt "C:\Users\Lukas\Documents\Visual Studio 2013\Projects\EuroCity\GrTown\GrTown.vcxproj" auf Knoten "2", Build Ziel(e).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\WinFltk\include /I.. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D _VC80_UPGRADE=0x0710 /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
-         Main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\WinFltk\include /I.. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D _VC80_UPGRADE=0x0710 /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Fountain.cpp
+         Fountain.cpp
+     1>c:\users\lukas\documents\visual studio 2013\projects\eurocity\grtown\fountain.cpp(28): warning C4551: Dem Funktionsaufruf fehlt die Argumentliste
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Debug\GrTown.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\WinFltk\lib fltkd.lib fltkgld.lib comctl32.lib wsock32.lib opengl32.lib glu32.lib fltkjpegd.lib fltkpngd.lib fltkimagesd.lib fltkzd.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"Debug\GrTown.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"Debug\GrTown.lib" /MACHINE:X86 /SAFESEH:NO Debug\Cars.obj
          Debug\Objects.obj
          Debug\SimpleBehaviors.obj
          Debug\Suburbs.obj
+         Debug\Fountain.obj
          Debug\Humans.obj
          Debug\Drive.obj
          Debug\Roads.obj
@@ -31,4 +33,4 @@
 
 Build erfolgreich.
 
-Verstrichene Zeit 00:00:01.15
+Verstrichene Zeit 00:00:00.82

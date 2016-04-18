@@ -104,6 +104,7 @@
     <ClInclude Include="Examples\Objects.H" />
     <ClInclude Include="Examples\SimpleBehaviors.H" />
     <ClInclude Include="Examples\Suburbs.H" />
+    <ClInclude Include="Fountain.H" />
     <ClInclude Include="Humans.h" />
     <ClInclude Include="Roads\Drive.H" />
     <ClInclude Include="Roads\Roads.H" />
@@ -128,6 +129,7 @@
     <ClCompile Include="Examples\Objects.cpp" />
     <ClCompile Include="Examples\SimpleBehaviors.cpp" />
     <ClCompile Include="Examples\Suburbs.cpp" />
+    <ClCompile Include="Fountain.cpp" />
     <ClCompile Include="Humans.cpp" />
     <ClCompile Include="Roads\Drive.cpp" />
     <ClCompile Include="Roads\Roads.cpp" />

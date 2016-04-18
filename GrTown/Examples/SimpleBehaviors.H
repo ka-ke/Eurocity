@@ -9,6 +9,7 @@
 #include "../Behavior.H"
 #include "../Examples/Suburbs.H"
 #include "../Humans.h"
+#include "../Fountain.H"
 
 ////////////////////////////////////////////////////////////////////////
 // a simple behavior: spin around the center point
@@ -58,4 +59,10 @@ public:
 	virtual void simulateUntil(unsigned long);
 };
 
+class Spray : public Behavior {
+public:
+	Spray(GrObject* owner, float vel = .01);
+	float vel;
+	virtual void simulateUntil(unsigned long);
+};
 
