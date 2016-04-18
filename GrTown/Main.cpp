@@ -27,7 +27,6 @@
 #include "Roads/Roads.H"
 #include "Roads/Drive.H"
 
-
 // define this to get 2 cars that always turn
 // #define TESTCARS
 
@@ -74,34 +73,6 @@ int main(int /*argc*/, char** /*argv*/)
 
   // *****************************************************************
   //  Make your town here
-
-  // first, some really simple things
-
-  // cubes are particularly easy since they set their own position
-  // we need to raise the cube since we're giving the position of the
-  // center 
-  GrObject* cube1 = new ShadedCube(-50,5,-50,10,   .7f, .6f, .3f);
-  add(cube1);
-  cube1->name = "Cube1";
-  // make it an interesting object (so its easy to look at)
-  // and give a place to look at it from
-  // this is a good object to look at since it won't move
-  cube1->interesting = true;
-  cube1->laX = 0; cube1->laY = 0; cube1->laZ = 0;
-  cube1->lfX = 70; cube1->lfY = 50; cube1->lfZ = 0;
-
-  // make another cube - make this one spin around
-  GrObject* cube2 = new Cube(-50,5,-25,10,   .3f, .6f, .7f);
-  add(cube2);
-  new Spin(cube2);
-
-  // now to demonstrate hierarchy - make another cube that spins, and
-  // put a smaller cube on top of it
-  GrObject* cube3 = new Cube(-50,5,-75,10,   .7f, .3f, .6f);
-  add(cube3);
-  new Spin(cube3,.001f);
-  GrObject* cube4 = new Cube(0,7.5,0, 5, 1,0,1);
-  cube3->add(cube4);
 
   ////////////////////////////////////////////////////////////////////////
   // now to make a real town!
@@ -178,13 +149,15 @@ int main(int /*argc*/, char** /*argv*/)
 	t->interesting = true;
 	t->laX = 1100; t->laY = 0;   t->laZ = 690;
 	t->lfX = 600; t->lfY = 200; t->lfZ = 450;
-	// make cars go around the track
-	Human* h = new Human("Daniel",0);
+	// make joggers go around the track
+	int zombify = 0;
+
+	Human* h = new Human("Daniel", zombify);
 	add(h);
 	new Walking(h);
 	Drive* d = new SimpleDrive(h, t, 0, 0);
 	d->speed *= 0.1;
-	h = new Human("Hans",0);
+	h = new Human("Diana",1);
 	add(h);
 	new Walking(h);
 	d = new SimpleDrive(h,t,0,1);
