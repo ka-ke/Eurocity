@@ -30,6 +30,13 @@
 // define this to get 2 cars that always turn
 // #define TESTCARS
 
+float RandomFloat3(float a, float b) {
+	float random = ((float)rand()) / (float)RAND_MAX;
+	float diff = b - a;
+	float r = random * diff;
+	return a + r;
+}
+
 const int numCars = 1;
 const int nGrids = 5;
 
@@ -164,7 +171,7 @@ int main(int /*argc*/, char** /*argv*/)
 	d = new SimpleDrive(h,t,0,1);
 	d->speed *= 0.2;
 
-	// make an ufo that patrols over the city
+	// make ufos that patrols over the city
 	for (int ufoN = 0; ufoN < 1; ufoN++){
 
 		Ufo* ufo1;
@@ -193,6 +200,13 @@ int main(int /*argc*/, char** /*argv*/)
 	ufoBig->size = 80;
 	add(ufoBig, 1100, 2000, 690);
 	new Descend(ufoBig);
+
+	// and more zombies
+	for (int zN = 0; zN < 25; zN++){
+		Human* zombie;
+		zombie = new Human("zombie", 3);
+		add(zombie, RandomFloat3(-10, 1500), 0, RandomFloat3(-10, 1500));
+	}
 
   // *****************************************************************
   // now make a UI
