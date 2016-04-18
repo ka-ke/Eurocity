@@ -16,6 +16,8 @@ public:
 	Texture* frontTexture;
 
 	Ufo(char* type, int color);
+	float position;
+	float height;
 	Color color;
 
 	// this draw the whole car - subclasses just redefine "body"

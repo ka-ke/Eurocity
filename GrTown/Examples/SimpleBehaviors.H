@@ -7,6 +7,7 @@
 // simple example behaviors - something to learn from
 
 #include "../Behavior.H"
+#include "../Ufo.h"
 
 ////////////////////////////////////////////////////////////////////////
 // a simple behavior: spin around the center point
@@ -40,6 +41,20 @@ public:
   TurnAlways(GrObject* owner, float vel = .1);
   float vel;
   virtual void simulateUntil(unsigned long);
+};
+
+class RandomFly : public Behavior {
+public:
+	RandomFly(GrObject* owner, float vel = 10);
+	float vel;
+	virtual void simulateUntil(unsigned long);
+};
+
+class Descend : public Behavior {
+public:
+	Descend(GrObject* owner, float vel = 10);
+	float vel;
+	virtual void simulateUntil(unsigned long);
 };
 
 

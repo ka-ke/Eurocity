@@ -62,34 +62,6 @@ int main(int /*argc*/, char** /*argv*/)
   // *****************************************************************
   //  Make your town here
 
-  // first, some really simple things
-
-  // cubes are particularly easy since they set their own position
-  // we need to raise the cube since we're giving the position of the
-  // center 
-  GrObject* cube1 = new ShadedCube(-50,5,-50,10,   .7f, .6f, .3f);
-  add(cube1);
-  cube1->name = "Cube1";
-  // make it an interesting object (so its easy to look at)
-  // and give a place to look at it from
-  // this is a good object to look at since it won't move
-  cube1->interesting = true;
-  cube1->laX = 0; cube1->laY = 0; cube1->laZ = 0;
-  cube1->lfX = 70; cube1->lfY = 50; cube1->lfZ = 0;
-
-  // make another cube - make this one spin around
-  GrObject* cube2 = new Cube(-50,5,-25,10,   .3f, .6f, .7f);
-  add(cube2);
-  new Spin(cube2);
-
-  // now to demonstrate hierarchy - make another cube that spins, and
-  // put a smaller cube on top of it
-  GrObject* cube3 = new Cube(-50,5,-75,10,   .7f, .3f, .6f);
-  add(cube3);
-  new Spin(cube3,.001f);
-  GrObject* cube4 = new Cube(0,7.5,0, 5, 1,0,1);
-  cube3->add(cube4);
-
   ////////////////////////////////////////////////////////////////////////
   // now to make a real town!
   int r,c;
@@ -149,9 +121,16 @@ int main(int /*argc*/, char** /*argv*/)
 #endif
 
   // make an ufo
-  Ufo* ufo1;
-  ufo1 = new Ufo("ufo", 1);
-  add(ufo1, 50, 100, 0);
+  for (int ufoN = 0; ufoN < 1; ufoN++){
+
+	  Ufo* ufo1;
+	  ufo1 = new Ufo("ufo", ufoN);
+	  add(ufo1, ufo1->position, 300, ufo1->position);
+	  new RandomFly(ufo1);
+	  new Descend(ufo1);
+	  //new Spin(ufo1);
+  }
+
 
 // ========== TODO1: ===================
 // The following code added a round race track, 

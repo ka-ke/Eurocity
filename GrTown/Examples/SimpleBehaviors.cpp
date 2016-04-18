@@ -68,3 +68,59 @@ void TurnAlways::simulateUntil(unsigned long t)
   lastV = t;
 }
 
+float RandomFloat(float a, float b) {
+	float random = ((float)rand()) / (float)RAND_MAX;
+	float diff = b - a;
+	float r = random * diff;
+	return a + r;
+}
+
+Descend::Descend(GrObject* o, float v)
+	: Behavior(o), vel(v)
+{
+}
+void Descend::simulateUntil(unsigned long t)
+{
+	unsigned long dt = t - lastV;	// how long since last update
+	float secs = ((float)dt) / 1000;	// convert ms to sec
+	lastV = t;
+
+	if (owner->transform[3][1] > 100){
+		owner->transform[3][1] += owner->transform[1][1] * secs * vel *-1;
+	}
+	lastV = t;
+}
+
+RandomFly::RandomFly(GrObject* o, float v)
+	: Behavior(o), vel(v){
+}
+
+int newDirection;
+float randomX = RandomFloat(-5, 5);
+float randomZ = RandomFloat(-5, 5);
+void RandomFly::simulateUntil(unsigned long t)
+{
+	unsigned long dt = t - lastV;	// how long since last update
+	float secs = ((float)dt) / 1000;	// convert ms to sec
+
+	if (newDirection == 1){
+		randomX = RandomFloat(-5, 5);
+		randomZ = RandomFloat(-5, 5);
+		newDirection = 0;
+	}
+
+	owner->transform[3][0] += owner->transform[0][0] * secs * vel * randomX * 5;
+	owner->transform[3][2] += owner->transform[2][2] * secs * vel * randomZ * 5;
+
+	if (owner->transform[3][0] <= 0 || owner->transform[3][0] >= 2500){
+		randomX = -randomX;
+		randomZ = RandomFloat(-5, 5);
+	}
+	if (owner->transform[3][2] <= 0 || owner->transform[3][2] >= 1500){
+		randomZ = -randomZ;
+		randomX = RandomFloat(-5, 5);
+	}
+
+	lastV = t;
+}
+
