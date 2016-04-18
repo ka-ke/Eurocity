@@ -12,7 +12,7 @@
 int flyCamCount = 0;
 
 FlyCamera::FlyCamera() : GrObject("FlyCamera",flyCamCount), 
-  direction(0), pitch(0), posX(0), posY(10), posZ(0),
+  direction(0), pitch(0), posX(900), posY(10), posZ(700),
   lastUItime(0), buttonDown(0)
 {
   // don't make this ridable, since its special

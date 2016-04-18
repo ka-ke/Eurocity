@@ -17,9 +17,9 @@ struct Character{
 	char* bodyTexLow;
 };
 Character characters[] = {
-	{ "Runner1", "MaleFace.bmp", "Run1Top.bmp", "Run1Mid.bmp", "Run1Low.bmp"},
-	{ "Runner2", "FemaleFace.png", "Run2Top.png", "Run2Mid.png", "Run2Low.png" },
-	{ "Zombie", "MaleFace.png", "Run1Top.png", "Run1Mid.png", "Run1Low.png" }
+	{ "Runner1", "MaleFace2.png", "Run1Top.bmp", "Run1Mid.bmp", "Run1Low.bmp"},
+	{ "Runner2", "FemaleFace3.bmp", "Run1Top.bmp", "Run1Mid.bmp", "Run1Low.bmp" },
+	{ "Zombie", "ZombieFace2.bmp", "Run1Top.bmp", "Run1Mid.bmp", "Run1Low.bmp" }
 };
 const int nCharacters = 3;
 
@@ -255,6 +255,14 @@ Human::Human(char* name, int c) : GrObject(name, HumanCtr, characters[c%nCharact
 
 void Human::draw(DrawingState* d)
 {
+	int tod = d->timeOfDay;
+	bool daytime;
+	if (tod >= 6 && tod <= 19 && character != 1){
+		character = 0;
+	}
+	else if(character == 0){
+		character = 2;
+	}
 	glPushMatrix();
 	glDisable(GL_COLOR_MATERIAL);
 	glRotatef(180, 0, 1, 0);
@@ -269,9 +277,9 @@ void Human::draw(DrawingState* d)
 	createRLeg(motionPosition);
 	glEnable(GL_COLOR_MATERIAL);
 	glPopMatrix();
+	
 }
 
-// draw headlights at night
 void Human::drawAfter(DrawingState* s)
 {
 }

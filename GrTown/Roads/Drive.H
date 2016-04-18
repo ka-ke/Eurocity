@@ -59,6 +59,14 @@ public:
   virtual void simulateUntil(unsigned long time);
 };
 
+class ZombieDrive : public Drive
+{
+public:
+	ZombieDrive(GrObject* car, Road* road, float u, int lane);
+
+	virtual void simulateUntil(unsigned long time);
+};
+
 
 // a more complex driving behavior - randomly drive around
 // when you get to a dead end, turn around

@@ -117,6 +117,28 @@ void SimpleDrive::simulateUntil(unsigned long time)
 	setMatrix();
 }
 
+ZombieDrive::ZombieDrive(GrObject* car, Road*  road, float u, int lane)
+	: Drive(car, road, u, lane)
+{
+}
+
+// make the zombie change the running direction
+void ZombieDrive::simulateUntil(unsigned long time)
+{
+	unsigned long leftover = 0;
+	if (u >= 1) u = 0;
+	leftover = advanceU(time);
+
+	// if we didn't go far enough since we hit the end, we need to
+	// do something
+	// idea: say that our last update is not now, so next time, we'll
+	// take a longer step
+	if (leftover)
+		lastV -= leftover;
+
+	setMatrix();
+}
+
 ////////////////////////////////////////////////////////////////////////
 RandomDrive::RandomDrive(GrObject* car, Road*  road, float u, int lane, int p)
   : Drive(car, road, u, lane), prefer(p)
