@@ -15,6 +15,7 @@
 #include "Humans.h"
 #include "Fountain.H"
 #include "Ufo.h"
+#include "Tank.h"
 
 // for setting up shader paths and textures
 #include "Utilities/ShaderTools.H"
@@ -29,6 +30,13 @@
 
 // define this to get 2 cars that always turn
 // #define TESTCARS
+
+float RandomFloat3(float a, float b) {
+	float random = ((float)rand()) / (float)RAND_MAX;
+	float diff = b - a;
+	float r = random * diff;
+	return a + r;
+}
 
 const int numCars = 1;
 const int nGrids = 5;
@@ -116,10 +124,11 @@ int main(int /*argc*/, char** /*argv*/)
   // add some cars
   for(int r=0; r<50; r++) {
 	GrObject* c;
-	switch(rand() % 3) {
-	  case 0: c = new Van(rand()); break;
-	  case 1: c = new SUV(rand()); break;
-	  case 2: c = new HatchBack(rand()); break;
+	switch (rand() % 4) {
+	case 0: c = new Van(rand()); break;
+	case 1: c = new SUV(rand()); break;
+	case 2: c = new HatchBack(rand()); break;
+	case 3: c = new Tank("tank", rand()); break;
 	}
 	add(c);
     new RandomDrive(c,theRoads[rand() % theRoads.size()],.2f,rand() % 2);
@@ -150,29 +159,24 @@ int main(int /*argc*/, char** /*argv*/)
 	t->laX = 1100; t->laY = 0;   t->laZ = 690;
 	t->lfX = 600; t->lfY = 200; t->lfZ = 450;
 	// make joggers go around the track
-	int zombify = 0;
-	//zombify not in use atm
 
-	Human* h = new Human("Daniel", zombify);
+	Human* h = new Human("Daniel", 0, true);
 	add(h);
 	new Walking(h);
 	Drive* d = new SimpleDrive(h, t, 0, 0);
 	d->speed *= 0.1;
-	h = new Human("Diana",1);
+	h = new Human("Diana",1, false);
 	add(h);
 	new Walking(h);
 	d = new SimpleDrive(h,t,0,1);
 	d->speed *= 0.2;
 
-	// make an ufo that patrols over the city
-	for (int ufoN = 0; ufoN < 1; ufoN++){
-
+	// make ufo that patrols over the city
 		Ufo* ufo1;
-		ufo1 = new Ufo("ufo", ufoN);
+		ufo1 = new Ufo("ufo", 1);
 		add(ufo1, ufo1->position, 500, ufo1->position);
 		new RandomFly(ufo1);
 		new Descend(ufo1);
-	}
 
 	// make an ufo that captures people every night
 	Ufo* ufo2;
@@ -181,7 +185,7 @@ int main(int /*argc*/, char** /*argv*/)
 	new Descend(ufo2);
 	new Spin(ufo2);
 
-	h = new Human("Unlucky", rand()%3);
+	h = new Human("Unlucky", 2, true);
 	add(h, 50, 0, 70);
 	new Walking(h);
 	new Ascend(h);
@@ -193,6 +197,13 @@ int main(int /*argc*/, char** /*argv*/)
 	ufoBig->size = 80;
 	add(ufoBig, 1100, 2000, 690);
 	new Descend(ufoBig);
+
+	// and more zombies
+	for (int zN = 0; zN < 25; zN++){
+		Human* zombie;
+		zombie = new Human("zombie", 0, true);
+		add(zombie, RandomFloat3(-10, 1500), 0, RandomFloat3(-10, 1500));
+	}
 
   // *****************************************************************
   // now make a UI

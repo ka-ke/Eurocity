@@ -31,6 +31,13 @@ public:
   virtual void draw(DrawingState*);
 };
 
+class Park : public GrObject {
+public:
+	Park(float x1, float z1, float x2, float z2);
+	float x1, z1, x2, z2;
+	virtual void draw(DrawingState*);
+};
+
 
 // three very basic houses.
 // only thing that makes them at all interesting is that they have

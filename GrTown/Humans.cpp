@@ -246,38 +246,55 @@ void createRLeg(float position){
 }
 #pragma endregion
 
-Human::Human(char* name, int c) : GrObject(name, HumanCtr, characters[c%nCharacters].name)
+Human::Human(char* name, int c, bool z) : GrObject(name, HumanCtr, characters[c%nCharacters].name)
 {
 	character = c%nCharacters;
 	motionPosition = 0;
 	motionPositionInv = false;
+	zombie = z;
 }
 
 void Human::draw(DrawingState* d)
 {
 	int tod = d->timeOfDay;
-	bool daytime;
-	if (tod >= 6 && tod <= 19 && character != 1){
-		character = 0;
+
+	if (tod >= 6 && tod <= 19){
+		if (character != 2){
+			glPushMatrix();
+			glDisable(GL_COLOR_MATERIAL);
+			glRotatef(180, 0, 1, 0);
+			glScalef(0.7, 0.7, 0.7);
+			glTranslatef(0, 10, 0);
+			glRotatef(90, 1, 0, 0);
+			createCorpul(motionPosition, characters[character]);
+			glTranslatef(0, 0, 2);
+			glTranslatef(1.5, 0, 0);
+			createLLeg(motionPosition);
+			glTranslatef(-3, 0, 0);
+			createRLeg(motionPosition);
+			glEnable(GL_COLOR_MATERIAL);
+			glPopMatrix();
+		}
 	}
-	else if(character == 0){
-		character = 2;
+	else{
+		if (zombie == true){
+			character = 2;
+		}
+		glPushMatrix();
+		glDisable(GL_COLOR_MATERIAL);
+		glRotatef(180, 0, 1, 0);
+		glScalef(0.7, 0.7, 0.7);
+		glTranslatef(0, 10, 0);
+		glRotatef(90, 1, 0, 0);
+		createCorpul(motionPosition, characters[character]);
+		glTranslatef(0, 0, 2);
+		glTranslatef(1.5, 0, 0);
+		createLLeg(motionPosition);
+		glTranslatef(-3, 0, 0);
+		createRLeg(motionPosition);
+		glEnable(GL_COLOR_MATERIAL);
+		glPopMatrix();
 	}
-	glPushMatrix();
-	glDisable(GL_COLOR_MATERIAL);
-	glRotatef(180, 0, 1, 0);
-	glScalef(0.7, 0.7, 0.7);
-	glTranslatef(0, 10, 0);
-	glRotatef(90, 1, 0, 0);
-	createCorpul(motionPosition, characters[character]);
-	glTranslatef(0, 0, 2);
-	glTranslatef(1.5, 0, 0);
-	createLLeg(motionPosition);
-	glTranslatef(-3, 0, 0);
-	createRLeg(motionPosition);
-	glEnable(GL_COLOR_MATERIAL);
-	glPopMatrix();
-	
 }
 
 void Human::drawAfter(DrawingState* s)
