@@ -157,29 +157,24 @@ int main(int /*argc*/, char** /*argv*/)
 	t->laX = 1100; t->laY = 0;   t->laZ = 690;
 	t->lfX = 600; t->lfY = 200; t->lfZ = 450;
 	// make joggers go around the track
-	int zombify = 0;
-	//zombify not in use atm
 
-	Human* h = new Human("Daniel", zombify);
+	Human* h = new Human("Daniel", 0, true);
 	add(h);
 	new Walking(h);
 	Drive* d = new SimpleDrive(h, t, 0, 0);
 	d->speed *= 0.1;
-	h = new Human("Diana",1);
+	h = new Human("Diana",1, false);
 	add(h);
 	new Walking(h);
 	d = new SimpleDrive(h,t,0,1);
 	d->speed *= 0.2;
 
-	// make ufos that patrols over the city
-	for (int ufoN = 0; ufoN < 1; ufoN++){
-
+	// make ufo that patrols over the city
 		Ufo* ufo1;
-		ufo1 = new Ufo("ufo", ufoN);
+		ufo1 = new Ufo("ufo", 1);
 		add(ufo1, ufo1->position, 500, ufo1->position);
 		new RandomFly(ufo1);
 		new Descend(ufo1);
-	}
 
 	// make an ufo that captures people every night
 	Ufo* ufo2;
@@ -188,7 +183,7 @@ int main(int /*argc*/, char** /*argv*/)
 	new Descend(ufo2);
 	new Spin(ufo2);
 
-	h = new Human("Unlucky", rand()%3);
+	h = new Human("Unlucky", 2, true);
 	add(h, 50, 0, 70);
 	new Walking(h);
 	new Ascend(h);
@@ -204,7 +199,7 @@ int main(int /*argc*/, char** /*argv*/)
 	// and more zombies
 	for (int zN = 0; zN < 25; zN++){
 		Human* zombie;
-		zombie = new Human("zombie", 3);
+		zombie = new Human("zombie", 0, true);
 		add(zombie, RandomFloat3(-10, 1500), 0, RandomFloat3(-10, 1500));
 	}
 

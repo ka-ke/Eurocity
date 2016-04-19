@@ -13,8 +13,8 @@ Fountain::Fountain(char* name, double s) : GrObject(name)
 	int i;
 	for (i = 0; i < 1500; i++){
 		double x1 = rand() % 40;
-		double x2 = rand() % 100;
-		double x = x1 + x2 * 0.001;
+		double x2 = rand() % 10000;
+		double x = x1 + x2 * 0.0001;
 		double y = (-0.25 * pow(x,2)) + (10 * x);
 		double angle = rand() % 359;
 		particles[i][1] = x;

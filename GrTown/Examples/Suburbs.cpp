@@ -92,6 +92,33 @@ void Lawn::draw(DrawingState* d)
   glBindTexture(GL_TEXTURE_2D,0);
 }
 
+Park::Park(float xi1, float zi1, float xi2, float zi2)
+	: x1(xi1), z1(zi1), x2(xi2), z2(zi2)
+{
+}
+
+void Park::draw(DrawingState* d)
+{
+	// the catch here is that we need to use a polygon offset to draw
+	// the lawn just above the ground...
+	if (d->drGrTex)
+		fetchTexture("flowers.png", true, true);
+	else
+		glBindTexture(GL_TEXTURE_2D, 0);
+	glEnable(GL_POLYGON_OFFSET_FILL);
+	glPolygonOffset(-2., -2.);
+	glNormal3f(0, 1, 0);
+	glColor3f(0, 1, 1);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, (z2 - z1) / 4.f);            glVertex3f(x1, 0, z2);
+	glTexCoord2f((x2 - x1) / 4.f, (z2 - z1) / 4.f); glVertex3f(x2, 0, z2);
+	glTexCoord2f((x2 - x1) / 4.f, 0);            glVertex3f(x2, 0, z1);
+	glTexCoord2f(0, 0);                      glVertex3f(x1, 0, z1);
+	glEnd();
+	glDisable(GL_POLYGON_OFFSET_FILL);
+	glBindTexture(GL_TEXTURE_2D, 0);
+}
+
 
 /***********************************************************************/
 /* simplest possible house */

@@ -9,11 +9,12 @@ class Texture;
 
 class Human : public GrObject {
 public:
-	Human(char* name, int c);
+	Human(char* name, int c, bool z);
 
 	int character;
 	float motionPosition;
 	bool motionPositionInv;
+	bool zombie;
 
 	virtual void draw(DrawingState*);
 	virtual void drawAfter(DrawingState*);
