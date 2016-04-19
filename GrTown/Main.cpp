@@ -15,6 +15,7 @@
 #include "Humans.h"
 #include "Fountain.H"
 #include "Ufo.h"
+#include "Tank.h"
 
 // for setting up shader paths and textures
 #include "Utilities/ShaderTools.H"
@@ -123,10 +124,11 @@ int main(int /*argc*/, char** /*argv*/)
   // add some cars
   for(int r=0; r<50; r++) {
 	GrObject* c;
-	switch(rand() % 3) {
-	  case 0: c = new Van(rand()); break;
-	  case 1: c = new SUV(rand()); break;
-	  case 2: c = new HatchBack(rand()); break;
+	switch (rand() % 4) {
+	case 0: c = new Van(rand()); break;
+	case 1: c = new SUV(rand()); break;
+	case 2: c = new HatchBack(rand()); break;
+	case 3: c = new Tank("tank", rand()); break;
 	}
 	add(c);
     new RandomDrive(c,theRoads[rand() % theRoads.size()],.2f,rand() % 2);
