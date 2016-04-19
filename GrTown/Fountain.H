@@ -16,10 +16,10 @@ public:
 	virtual void drawAfter(DrawingState*);
 
 private: 
-	void drawBassin(double size);
-	void drawWaterInBassin(double size);
-	void drawWaterFountain();
-	void drawParticle();
+	void drawBassin(double);
+	void drawWaterInBassin(double, DrawingState*);
+	void drawWaterFountain(DrawingState*);
+	void drawParticle(DrawingState*);
 };
 
 

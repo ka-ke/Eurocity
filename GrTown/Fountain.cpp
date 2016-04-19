@@ -32,8 +32,8 @@ void Fountain::draw(DrawingState* d)
 // draw headlights at night
 void Fountain::drawAfter(DrawingState* s)
 {
-	drawWaterInBassin(size);
-	drawWaterFountain();
+	drawWaterInBassin(size,s);
+	drawWaterFountain(s);
 }
 
 void Fountain::drawBassin(double size)
@@ -51,13 +51,15 @@ void Fountain::drawBassin(double size)
 	glPopMatrix();
 }
 
-void Fountain::drawWaterInBassin(double size){
+void Fountain::drawWaterInBassin(double size, DrawingState* s){
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_DST_ALPHA);
 
 	GLUquadricObj *obj = gluNewQuadric();
-	glColor4f(0.439216, 0.858824, 0.576471, 0.2);
-
+	int tod = s->timeOfDay;
+	if (tod >= 6 && tod <= 19) glColor4f(0.439216, 0.858824, 0.576471, 0.2);
+	else glColor4f(0.8, 0.2, 0.1, 0.2);
+	
 	glPushMatrix();
 	glRotatef(-90, 1, 0, 0);
 	glTranslatef(0, 0, 6);
@@ -67,22 +69,25 @@ void Fountain::drawWaterInBassin(double size){
 	glDisable(GL_BLEND);
 }
 
-void Fountain::drawWaterFountain(){
+void Fountain::drawWaterFountain(DrawingState* s){
 	int i;
 	for (i = 0; i < 1500; i++){
 		glPushMatrix();
 		glRotated(particles[i][3], 0, 1, 0);
 		glTranslated(particles[i][1], particles[i][2], 0);
-		drawParticle();
+		drawParticle(s);
 		glPopMatrix();
 	}
 }
 
-void Fountain::drawParticle(){
+void Fountain::drawParticle(DrawingState* s){
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_DST_ALPHA);
 
-	glColor3f(0.5,0.8,1);
+	int tod = s->timeOfDay;
+	if (tod >= 6 && tod <= 19) glColor3f(0.5, 0.8, 1);
+	else glColor3f(1, 0, 0);
+
 	billboardCheatSphericalBegin();
 	fetchTexture("particle1.png");
 	glBegin(GL_QUADS);
