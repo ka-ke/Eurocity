@@ -139,7 +139,7 @@ void Descend::simulateUntil(unsigned long t)
 	float secs = ((float)dt) / 1000;	// convert ms to sec
 	lastV = t;
 
-	if (owner->transform[3][1] > 100){
+	if (owner->transform[3][1] > 150){
 		owner->transform[3][1] += owner->transform[1][1] * secs * vel *-1;
 	}
 	lastV = t;
@@ -156,10 +156,10 @@ void Ascend::simulateUntil(unsigned long t)
 	float secs = ((float)dt) / 1000;	// convert ms to sec
 	lastV = t;
 
-	if (owner->transform[3][1] < 100){
+	if (owner->transform[3][1] < 150){
 		owner->transform[3][1] += owner->transform[1][1] * secs * vel;
 	}
-	if (owner->transform[3][1] >= 90){
+	if (owner->transform[3][1] >= 140){
 		owner->transform[3][1] = 0;
 	}
 }

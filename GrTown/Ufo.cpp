@@ -41,7 +41,7 @@ void Ufo::drawAfter(DrawingState* d)
 
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_DST_ALPHA);
-		float cone_length = 110;
+		float cone_length = 160;
 		float radius = 10;
 		float theta, dtheta = pi / 16;
 		int c;

@@ -63,13 +63,13 @@ int main(int /*argc*/, char** /*argv*/)
   o1->interesting = true;
   o1->laX = 0; o1->laY = 0; o1->laZ = 0;
   o1->lfX = -50; o1->lfY = 100; o1->lfZ = 300;
-  add(o1,-100,0,100,pi/2.f);
+  add(o1,4*430-100,0,4*230-100,pi/2.f);
 
   GrObject* o2 = new FerryWheel(10);
   o2->interesting = true;
   o2->laX = 0; o2->laY = 65; o2->laZ = 20;
   o2->lfX = -70; o2->lfY = 10; o2->lfZ = 160;
-  add(o2, 1500, 0, 690, pi / 3.f);
+  add(o2, 1500, 0, 670, pi / 3.f);
   new RunFerryWheel(o2);
 
   GrObject* o3 = new Fountain("myFountain",120);
@@ -122,7 +122,7 @@ int main(int /*argc*/, char** /*argv*/)
 
 #ifndef TESTCARS
   // add some cars
-  for(int r=0; r<50; r++) {
+  for(int r=0; r<30; r++) {
 	GrObject* c;
 	switch (rand() % 4) {
 	case 0: c = new Van(rand()); break;
@@ -174,19 +174,19 @@ int main(int /*argc*/, char** /*argv*/)
 	// make ufo that patrols over the city
 		Ufo* ufo1;
 		ufo1 = new Ufo("ufo", 1);
-		add(ufo1, ufo1->position, 500, ufo1->position);
+		add(ufo1, ufo1->position, 250, ufo1->position);
 		new RandomFly(ufo1);
 		new Descend(ufo1);
 
 	// make an ufo that captures people every night
 	Ufo* ufo2;
 	ufo2 = new Ufo("ufo", 101);
-	add(ufo2, 50, 100, 70);
+	add(ufo2, 4 * 430 - 100, 250, 4 * 230 - 100);
 	new Descend(ufo2);
 	new Spin(ufo2);
 
 	h = new Human("Unlucky", 2, true);
-	add(h, 50, 0, 70);
+	add(h, 4 * 430 - 100, 0, 4 * 230 - 100);
 	new Walking(h);
 	new Ascend(h);
 	d->speed *= 0.1;
@@ -195,7 +195,7 @@ int main(int /*argc*/, char** /*argv*/)
 	Ufo* ufoBig;
 	ufoBig = new Ufo("ufo", 1000);
 	ufoBig->size = 80;
-	add(ufoBig, 1100, 2000, 690);
+	add(ufoBig, 1100, 2500, 690);
 	new Descend(ufoBig);
 
 	// and more zombies
